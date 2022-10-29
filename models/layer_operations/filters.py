@@ -3,7 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 import numpy as np
 import math
-from models.model_layers.v1_random_conv import V1_init
+from models.layer_operations.v1_random_conv import V1_init
 from scipy.ndimage import gaussian_filter
 import random
 # from kymatio.scattering2d.filter_bank import filter_bank

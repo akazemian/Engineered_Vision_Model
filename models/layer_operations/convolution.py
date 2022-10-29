@@ -1,5 +1,5 @@
-from models.model_layers.filters import filters
-from models.model_layers.nonlinearity import nonlinearity
+from models.layer_operations.filters import filters
+from models.layer_operations.nonlinearity import nonlinearity
 from torch import nn
 from torch.nn import functional as F
 import math
@@ -31,7 +31,7 @@ class StandardConvolution(nn.Module):
     
     
     def extra_repr(self) -> str:
-        return 'out_channels={out_channels}, kernel_size={filter_size}, filter_type:{filter_type},max_pool={max_pool},curv_params:{curv_params}'.format(**self.__dict__)
+        return 'out_channels={out_channels}, kernel_size={filter_size}, filter_type:{filter_type},pooling={pooling},curv_params:{curv_params}'.format(**self.__dict__)
     
     
     
@@ -69,8 +69,9 @@ class StandardConvolution(nn.Module):
         
 class ScalingConvolution(StandardConvolution):
     
+    
     def extra_repr(self) -> str:
-        return 'out_channels={out_channels}, kernel_size={filter_size}, filter_type:{filter_type},ints_size:{ints_size},max_pool={max_pool},curv_params:{curv_params}'.format(**self.__dict__)
+        return 'out_channels={out_channels}, kernel_size={filter_size}, filter_type:{filter_type},pooling={pooling},curv_params:{curv_params}'.format(**self.__dict__)
     
     
     def forward(self,x):
