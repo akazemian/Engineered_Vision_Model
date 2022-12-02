@@ -23,11 +23,10 @@ def LoadObject2VecImages():
 
 
 
-def LoadImagenet21kImages():
+def LoadImagenet21kImages(num_classes=1000,num_per_class=50):
     all_images = []
-    num_classes=50
-    num_per_class=30
-    path = '/data/shared/datasets/imagenet21k_sorscher2021'
+    #path = '/data/shared/datasets/imagenet21k_sorscher2021'
+    path = '/data/shared/datasets/ilsvrc2012/train'
     seed(27)
     folders = os.listdir(path)
     cats = sample(folders,num_classes)
@@ -63,7 +62,7 @@ def LoadNSDImages(shared_images=True):
 
     
     
-def LoadImagenet21kVal(num_classes=1000, num_per_class=10, separate_classes=False):
+def LoadImagenet21kVal(num_classes=1500, num_per_class=20, separate_classes=False):
     #_logger = logging.getLogger(fullname(LoadImagenet21kVal))
     base_indices = np.arange(num_per_class).astype(int)
     indices = []
@@ -98,13 +97,13 @@ def LoadImagenet21kVal(num_classes=1000, num_per_class=10, separate_classes=Fals
 
     
     
-def LoadImagePaths(name):
+def LoadImagePaths(name,num_classes=None,num_per_class=None):
     
     if name == 'object2vec':
         return LoadObject2VecImages()
         
     elif name == 'imagenet21k':
-        return LoadImagenet21kImages()
+        return LoadImagenet21kImages(num_classes,num_per_class)
 
     elif name == 'imagenet21k_val':
         num_classes=1000
